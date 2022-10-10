@@ -1,35 +1,19 @@
 import { Component } from '@angular/core';
-import { Car } from './car';
+
 @Component({
 selector: 'app-root',
 template: `
 
-<table>
-  <tr *ngFor = "let car of _cars">
-    <td>{{car.make}}</td>
-    <td>{{car.model}}</td>
-    <td><button (click)="showCar(car)">Click me !</button></td>
-    <!-- <td><button (click)="showCar(car)">showPHOTO !</button></td> -->
-  </tr>
-<table>
-
+  <p>Foreground:<input [(ngModel)]="fg"></p>
+  <p>Background:<input [(ngModel)]="bg"></p>
+  <di [ngStyle]="{'color':fg, 'background-color':bg,'padding':'5px'}">Zone de teste</di>]
 `,
 styles: []
 })
 
 
 export class AppComponent{
-_cars = [new Car('car1', 2002, 'bmw', 'm3', 'https://en.wikipedia.org/wiki/BMW_M3'),
-
-  new Car('car2', 2017, 'acura', 'nsx','https://en.wikipedia.org/wiki/Honda_NSX'),
-  new Car('car3', 2016, 'chevy', 'camaro', 'https://en.wikipedia.org/wiki/Chevrolet_Camaro')];
-
-   showCar(Car: any){
-    const desc = Car.make;
-    if (window.confirm('click "ok" to be redirected to ' + Car.article)){
-      window.location=Car.article;
-      }
-
-    }
-        
+ fg= "#ff0f1f";
+ bg="#faa350";
 }
+//windowa.location.href:pour afficher l'image pour la lab1.2
