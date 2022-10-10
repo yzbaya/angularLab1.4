@@ -1,19 +1,25 @@
-import { Component } from '@angular/core';
-
+import { Component, AfterViewInit, ViewChild } from 
+'@angular/core';
 @Component({
 selector: 'app-root',
 template: `
-
-  <p>Foreground:<input [(ngModel)]="fg"></p>
-  <p>Background:<input [(ngModel)]="bg"></p>
-  <di [ngStyle]="{'color':fg, 'background-color':bg,'padding':'5px'}">Zone de teste</di>]
+<input #input type="text" (input)="textInput($event)"
+value=""/>
+<hr>
+Upper-Case: {{upperCase}}
+<br/>
+Lower-Case: {{lowerCase}}
 `,
-styles: []
-})
-
-
-export class AppComponent{
- fg= "#ff0f1f";
- bg="#faa350";
+styles: [] })
+export class AppComponent implements AfterViewInit{
+upperCase: string= '';
+lowerCase: string = '';
+@ViewChild('input') inputBox:any;
+textInput(event:any){
+this.upperCase = event.target.value.toUpperCase();
+this.lowerCase = event.target.value.toLowerCase();
 }
+ngAfterViewInit() {
+this.inputBox.nativeElement.focus()
+}}
 //windowa.location.href:pour afficher l'image pour la lab1.2
